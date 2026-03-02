@@ -127,6 +127,12 @@ But **strategic questions need specific context** - shallow exploration leads to
 | **Project Knowledge** | - | `projects/projects.md` |
 | **Active Tasks** | `tasks/tasks.md` | `tasks/active/` |
 | **Blocked Issues** | `tasks/tasks.md` | `tasks/blocked/` |
+| **Real-World Patterns** | - | `guides/guides.md` |
+| CLAUDE.md Design | `guides/guides.md` | `guides/claude-md-design.md` |
+| Skill System | `guides/guides.md` | `guides/skill-system.md` |
+| Multi-Agent Delegation | `guides/guides.md` | `guides/multi-agent-delegation.md` |
+| Discovery Sprints | `guides/guides.md` | `guides/discovery-sprints.md` |
+| Release Cycle | `guides/guides.md` | `guides/release-cycle.md` |
 
 ---
 
@@ -139,6 +145,7 @@ But **strategic questions need specific context** - shallow exploration leads to
 | **tasks/** | Task tracking & TODOs | `tasks/tasks.md` |
 | **ideas/** | Ideas & exploration | `ideas/ideas.md` |
 | **projects/** | Project-specific knowledge | `projects/projects.md` |
+| **guides/** | Real-world patterns & guides | `guides/guides.md` |
 | **.templates/** | Document templates | `.templates/templates.md` |
 
 ---
@@ -159,6 +166,14 @@ your-knowledge-base/
 ├── methodology/                 # [Hub] AKB methodology
 │   ├── methodology.md           # Hub entry
 │   └── agentic-knowledge-base.md
+│
+├── guides/                      # [Hub] Real-world patterns
+│   ├── guides.md                # Hub entry
+│   ├── claude-md-design.md      # Root design patterns
+│   ├── skill-system.md          # Operational playbooks
+│   ├── multi-agent-delegation.md
+│   ├── discovery-sprints.md
+│   └── release-cycle.md
 │
 ├── ideas/                       # [Hub] Ideas/Ideation
 │   └── ideas.md                 # Hub entry + routing
@@ -199,7 +214,15 @@ your-knowledge-base/
 3. Write with TL;DR + contextual links
 4. Update the Hub file
 
-### Path 3: Adding a New Project
+### Path 3: Real-World Patterns
+
+1. `guides/claude-md-design.md` - How to design CLAUDE.md
+2. `guides/skill-system.md` - Operational playbooks
+3. `guides/multi-agent-delegation.md` - Sub-agent patterns
+4. `guides/discovery-sprints.md` - Hypothesis validation
+5. `guides/release-cycle.md` - PR-based releases
+
+### Path 4: Adding a New Project
 
 1. Create `projects/{project-name}/` folder
 2. Create `{project-name}.md` Hub file
@@ -254,4 +277,4 @@ your-knowledge-base/
 
 ---
 
-*Last updated: 2025-01*
+*Last updated: 2026-03*

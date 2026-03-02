@@ -11,28 +11,28 @@ tags:
 
 ## TL;DR
 
-- **키워드1**: 핵심 설명 (Grep 검색 대상)
-- **키워드2**: 핵심 설명
-- **키워드3**: 핵심 설명
+- **Keyword1**: Core description (Grep search target)
+- **Keyword2**: Core description
+- **Keyword3**: Core description
 
 ---
 
-## 본문
+## Body
 
-### 섹션 1
+### Section 1
 
-[내용]
+[Content]
 
-상세 내용은 `경로/파일.md`를 참고하세요.
+For details, see `path/file.md`.
 
-### 섹션 2
+### Section 2
 
-[내용]
+[Content]
 
 ---
 
-## 다음 단계
+## Next Steps
 
-- [상황 A]라면 → [파일A.md](./파일A.md)
-- [상황 B]라면 → [파일B.md](./파일B.md)
-- [상황 C]라면 → [파일C.md](../folder/파일C.md)
+- If [Scenario A] → [fileA.md](./fileA.md)
+- If [Scenario B] → [fileB.md](./fileB.md)
+- If [Scenario C] → [fileC.md](../folder/fileC.md)

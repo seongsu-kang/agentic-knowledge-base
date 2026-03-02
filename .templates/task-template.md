@@ -10,57 +10,57 @@ depends_on: []
 ---
 # [Task Title]
 
-> 📖 **관련 문서**: [Link to related documentation]
+> **Related docs**: [Link to related documentation]
 
 ---
 
 ## TL;DR
 
-- **목표**: [1-2 문장으로 작업 목표]
-- **진행률**: 0%
-- **예상 기간**: [예상 소요 기간]
-- **블로킹**: [블로킹 이슈 또는 "없음"]
+- **Goal**: [1-2 sentence task objective]
+- **Progress**: 0%
+- **Estimated Duration**: [Expected time]
+- **Blockers**: [Blocking issues or "None"]
 
 ---
 
-## 작업 체크리스트
+## Task Checklist
 
 ### Phase 1: [Phase Name]
 
-- [ ] 작업 1: 설명
-- [ ] 작업 2: 설명
-- [ ] 작업 3: 설명
+- [ ] Task 1: Description
+- [ ] Task 2: Description
+- [ ] Task 3: Description
 
-**파일**: [영향받는 파일 경로]
+**Files**: [Affected file paths]
 
 ---
 
 ### Phase 2: [Phase Name]
 
-- [ ] 작업 1: 설명
-- [ ] 작업 2: 설명
+- [ ] Task 1: Description
+- [ ] Task 2: Description
 
 ---
 
-## 블로킹 이슈
+## Blocking Issues
 
-[블로킹 이슈 설명 또는 "현재 없음"]
+[Description of blocking issues or "None at this time"]
 
 ---
 
-## 진행 노트
+## Progress Notes
 
 ### YYYY-MM-DD
-- [진행 상황 기록]
+- [Progress update]
 
 ---
 
 ## Related Documentation
 
-- 📖 [Link 1](path)
-- 📖 [Link 2](path)
+- [Link 1](path)
+- [Link 2](path)
 
 ---
 
-*작성일: YYYY-MM-DD*
-*진행률: 0%*
+*Created: YYYY-MM-DD*
+*Progress: 0%*
