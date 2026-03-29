@@ -30,6 +30,45 @@ AI Agent-friendly Knowledge Base using AKB (Agentic Knowledge Base) methodology.
 
 ## AI Working Rules (CRITICAL)
 
+### Document Creation — 3 Principles (CRITICAL)
+
+> ⛔ **Before creating a new .md file:**
+
+```
+1. Grep first. If a doc on the same topic exists, add a section there.
+2. Link from Hub. No orphan documents.
+3. Same content in 2 places forbidden. Write once, others "→ see X".
+```
+
+| Situation | Action |
+|-----------|--------|
+| Editing existing Hub/doc | Just proceed |
+| **New architecture/design doc** | Run Knowledge Gate (check location + duplicates) |
+| Session wrap-up | Run AKB Linter (Hub links, orphan check) |
+| After major work completion | Deep audit (content duplication, SSOT violations, doc bloat) |
+
+### The Loop (Work Cycle)
+
+Every task follows this cycle. Implementing without completing the cycle is only half the job.
+
+| Step | Action | Why |
+|------|--------|-----|
+| 1. Knowledge | Check/research related docs | Without context, direction goes wrong |
+| 2. Task | Define task from docs | Without requirements, you'll rework |
+| 3. Implement | Execute the actual work | Value creation |
+| 4. Knowledge Update | Update docs with new insights | Prevents knowledge decay |
+| 5. Task Update | Update task status, check next work | Ensures continuity |
+
+### Skill Check Principle
+
+> ⛔ **If `.claude/skills/` contains related skills, read them FIRST.**
+
+Skill files define tools, commands, and guides for each task type.
+Working without reading skills means missing existing tools and starting from scratch.
+
+- Shared skills: `.claude/skills/_shared/{skill-id}/SKILL.md`
+- Role/domain skills: `.claude/skills/{skill-id}/SKILL.md`
+
 ### Hub-First Principle
 
 > ⛔ **Read Hub document BEFORE implementing/testing**
@@ -113,6 +152,83 @@ But **strategic questions need specific context** - shallow exploration leads to
 > Knowing "it's a wallet service" but not "what's the core problem" → Technology pushing happens.
 > AKB Hubs specify core problems, enabling "problem-centered" connections.
 
+### Knowledge Gate (Inline Rule)
+
+> **Before creating a new document, search existing docs first.**
+
+```
+1. Summarize the insight + 3-5 keywords
+2. Search existing docs (grep 3+ keywords)
+3. Decide:
+   - 70%+ overlap → Add to existing document
+   - 30-70% overlap → New doc + cross-link to existing
+   - <30% overlap → New document (register in Hub)
+   - Temporary info → Journal only (no new doc)
+4. Cross-link to related docs
+5. Register in the relevant Hub
+```
+
+### Agent Dispatch Rules (CRITICAL)
+
+> ⛔ **Sub-agents (Agent/Task) do NOT automatically receive CLAUDE.md.**
+> **You MUST instruct them to read CLAUDE.md in the first line of the prompt.**
+
+Without the Root (CLAUDE.md), sub-agents skip Hubs and dive straight into code,
+missing existing tools, guides, and constraints.
+
+#### Required Prompt Pattern
+
+Every sub-agent prompt **must include**:
+
+```
+⛔ AKB Rule: Read CLAUDE.md before starting work.
+Find the relevant Hub and read it first.
+Check the Hub's existing tools/guides/constraints before exploring code.
+⛔ Read the required skill files below and use the tools/commands defined in them.
+```
+
+### Self-Verification Before Escalation
+
+> **Before saying "I can't" or "user action needed", check your own tools/skills first.**
+
+```
+1. Glob search .claude/skills/ for related skills
+2. Read the skill and determine if it can solve the problem
+3. Only if all above fail → Report: "Tried X but unable due to [specific reason]"
+```
+
+### Skill Synchronization
+
+> **When changing code/processes, update related `.claude/skills/` SKILL.md files too.**
+
+| Change Type | Skill Update |
+|-------------|-------------|
+| New tool/script added | Add to tool listing |
+| Process change | Update procedure guide |
+| Feature removed | Remove related section |
+
+### AKB Management
+
+> **After completing any task, check knowledge updates.**
+
+| # | Item | Description |
+|---|------|-------------|
+| 1 | **New knowledge?** | Did this task produce new insights/decisions? |
+| 2 | **Search existing docs** | Are there related docs already? (grep 3+ keywords) |
+| 3 | **Decide location** | Add to existing doc vs create new (prefer existing) |
+| 4 | **Hub connection** | Is the new/updated doc reachable from a Hub? |
+| 5 | **Cross-link** | Are there mutual references between related docs? |
+| 6 | **Task update** | Is the task status updated? Next work identified? |
+
+### Document Hygiene
+
+| Rule | Description |
+|------|-------------|
+| No orphan docs | Every document must be reachable from a Hub |
+| Hub pattern | Each folder's entry point is `{folder}.md` |
+| Prefer existing | Adding 1 doc = maintenance cost. Strengthen existing > create new |
+| Cross-link | New docs must reference at least 1 related doc |
+
 ---
 
 ## Routing Table
@@ -187,14 +303,24 @@ your-knowledge-base/
 ├── learnings/                   # [Hub] Technical learning
 │   └── learnings.md             # Hub entry
 │
-└── projects/                    # [Hub] Project knowledge
-    ├── projects.md              # Hub entry
-    │
-    └── my-project/              # Example project
-        ├── my-project.md        # Project Hub
-        ├── architecture.md      # [Node]
-        └── guides/              # Sub-folder
-            └── guides.md        # [Sub-Hub]
+├── projects/                    # [Hub] Project knowledge
+│   ├── projects.md              # Hub entry
+│   │
+│   └── my-project/              # Example project
+│       ├── my-project.md        # Project Hub
+│       ├── architecture.md      # [Node]
+│       └── guides/              # Sub-folder
+│           └── guides.md        # [Sub-Hub]
+│
+└── .claude/
+    └── skills/
+        ├── my-skill/            # Domain-specific skill
+        │   └── SKILL.md
+        └── _shared/             # Shared across projects
+            ├── knowledge-gate/  # Document creation gatekeeper
+            │   └── SKILL.md
+            └── akb-linter/      # Document hygiene checker
+                └── SKILL.md
 ```
 
 ---
